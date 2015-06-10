@@ -18,6 +18,12 @@ function initShader(type, source, program){
 	gl.attachShader(program, shader);
 }
 
+function render(){
+	gl.clear(gl.COLOR_BUFFER_BIT);
+	gl.drawArrays(gl.POINTS, 0, 1);
+    window.requestAnimationFrame(render);
+}
+
 function main(){
 	canvas = document.getElementById("screen");
 	if (!canvas) {
@@ -56,6 +62,5 @@ function main(){
 		return null;
 	}
 	gl.useProgram(program);
-	gl.clear(gl.COLOR_BUFFER_BIT);
-	gl.drawArrays(gl.POINTS, 0, 1);
-};
+	render();
+}
